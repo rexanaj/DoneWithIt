@@ -13,6 +13,8 @@ import {
   Platform,
 } from 'react-native';
 import { useDimensions, useDeviceOrientation } from "@react-native-community/hooks";
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import ViewImageScreen from './app/screens/ViewImageScreen';
 
 // To start app: run 'npm start'
 // Press 'open in IOS simulator' in Metro Bundler
@@ -25,7 +27,72 @@ export default function App() {
   // console.log(useDeviceOrientation());       // Use hooks library - orientations
   const {landscape} = useDeviceOrientation();
 
+
   return (
+    
+    // PART THREE
+    // The shopping app 
+    // <WelcomeScreen />
+    <ViewImageScreen />
+
+    /*
+    // PART TWO 
+    // Working with: 
+    //  - Flexbox
+    //  - Absolute and relative positioning
+
+    <View 
+      style={{
+        backgroundColor: "#fff", 
+        flex: 1,
+        flexDirection: "row",       // Horizontal/vertical axis
+        justifyContent: "center",   // Justify entire view depending on main axis
+        alignItems: "center",       // Secondary axis
+        flexWrap: "wrap",
+      }}
+    >
+      <View style={{
+        backgroundColor: "dodgerblue",
+        width: 100,
+        height: 100
+      }}/>
+      <View style={{
+        backgroundColor: "gold",
+        width: 100,
+        height: 100
+      }}/>
+      <View style={{
+        backgroundColor: "tomato",
+        width: 100,
+        height: 100
+      }}/>
+      <View style={{
+        backgroundColor: "grey",
+        width: 100,
+        height: 100
+      }}/>
+      <View style={{
+        backgroundColor: "greenyellow",
+        width: 100,
+        height: 100
+      }}/>
+
+    </View>
+    */
+
+
+    /* 
+    // PART ONE
+    // Working with: 
+    //  - Views
+    //  - Text
+    //  - Images
+    //  - Touchables
+    //  - Buttons
+    //  - Alerts
+    //  - Stylesheets
+    //  - Dimensions 
+
     // Using a combination of styles - RIGHT overwrites the LEFT
     // e.g. <SafeAreaView style={styles.container, containerStyle}> 
 
@@ -59,6 +126,7 @@ export default function App() {
         height: landscape ? '100%' : '30%',
       }}></View>
     </SafeAreaView>
+    */
   );
 }
 
