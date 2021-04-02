@@ -11,12 +11,16 @@ import {
   Alert,
 } from 'react-native';
 
+// To start app: run 'npm start'
+// Press 'open in IOS simulator' in Metro Bundler
+
 export default function App() {
 
   const handlePress = () => console.log("Text pressed!");
 
   return (
-    <SafeAreaView style={styles.container}>
+    // Using a combination of styles - RIGHT overwrites the LEFT
+    <SafeAreaView style={styles.container, containerStyle}> 
       <Text numberOfLines={1} onPress={handlePress}>
         An app to walk through all the basic features of React Native. 
       </Text>
@@ -44,8 +48,17 @@ export default function App() {
   );
 }
 
+
+
+// STYLESHEETS
+// Method 1: plain Javascript properties 
+const containerStyle = { backgroundColor: "orange" };
+
+// Method 2: calling StyleSheet method 
+// - this method validates the properties - prevention from accidental mispellings 
 const styles = StyleSheet.create({
   container: {
+    // Normal Javascript object
     flex: 1,                  //Fills whole screen 
     backgroundColor: "#fff",  
     alignItems: 'center',
