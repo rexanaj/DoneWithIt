@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { 
+  Dimensions,
   StyleSheet, 
   Text, 
   View, 
@@ -9,7 +10,9 @@ import {
   SafeAreaView, 
   Button,
   Alert,
+  Platform,
 } from 'react-native';
+import { useDimensions, useDeviceOrientation } from "@react-native-community/hooks";
 
 // To start app: run 'npm start'
 // Press 'open in IOS simulator' in Metro Bundler
@@ -17,12 +20,18 @@ import {
 export default function App() {
 
   const handlePress = () => console.log("Text pressed!");
+  // console.log(Dimensions.get("screen"));     // Use Dimensions API 
+  // console.log(useDimensions());              // Use hooks library - screen dimensions
+  // console.log(useDeviceOrientation());       // Use hooks library - orientations
+  const {landscape} = useDeviceOrientation();
 
   return (
     // Using a combination of styles - RIGHT overwrites the LEFT
-    <SafeAreaView style={styles.container, containerStyle}> 
+    // e.g. <SafeAreaView style={styles.container, containerStyle}> 
+
+    <SafeAreaView style={styles.container}> 
       <Text numberOfLines={1} onPress={handlePress}>
-        An app to walk through all the basic features of React Native. 
+        An app to walk through all the basic features of React Native.
       </Text>
       <TouchableHighlight onPress={() => console.log("Image pressed")} >
         <Image 
@@ -44,6 +53,11 @@ export default function App() {
         title="Click me for a prompt" 
         onPress={() => Alert.prompt("This is a prompt", "Enter something below!", text => console.log(text))}
       />
+      <View style={{
+        backgroundColor: 'blue', 
+        width: '50%',
+        height: landscape ? '100%' : '30%',
+      }}></View>
     </SafeAreaView>
   );
 }
@@ -63,5 +77,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",  
     alignItems: 'center',
     justifyContent: 'center',
+    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // Add some padding to top for Android platforms
   },
 });
